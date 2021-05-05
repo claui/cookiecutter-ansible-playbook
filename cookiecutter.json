@@ -1,0 +1,14 @@
+{
+  "project_title": "",
+  "project_slug": "{{ cookiecutter.project_title.lower().replace(' ', '_').replace('-', '_') }}",
+  "first_playbook_name": "{{ cookiecutter.project_slug }}",
+  "first_play_name": "main",
+  "first_host_groupname": "development",
+  "project_license": ["Apache-2.0", "Proprietary"],
+  "author_full_name": "",
+  "onepassword_vault_shortname": "",
+  "ansible_vault_id": "",
+  "ansible_vault_itemname_in_1password": "",
+  "ansible_vault_uuid_in_1password": "",
+  "copyright_holder_full_name": "{{ cookiecutter.author_full_name }}"
+}

@@ -1,0 +1,63 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "description": "OP_SESSION_{{ cookiecutter.onepassword_vault_shortname }} token",
+      "id": "opSessionToken",
+      "type": "promptString",
+      "password": true
+    }
+  ],
+  "tasks": [
+    {
+      "label": "{{ cookiecutter.project_title }}: Check whether the hosts are online",
+      "type": "process",
+      "command": "ansible",
+      "args": [
+        "-i",
+        "${workspaceFolder}/inventory",
+        "{{ cookiecutter.first_host_groupname }}",
+        "-m",
+        "ping"
+      ],
+      "options": {
+        "env": {
+          "OP_SESSION_{{ cookiecutter.onepassword_vault_shortname }}": "${input:opSessionToken}"
+        }
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "{{ cookiecutter.project_title }}: Run the {{ cookiecutter.first_playbook_name }} playbook",
+      "type": "process",
+      "command": "ansible-playbook",
+      "args": [
+        "-i",
+        "${workspaceFolder}/inventory",
+        "{{ cookiecutter.first_playbook_name }}.yml"
+      ],
+      "options": {
+        "env": {
+          "OP_SESSION_{{ cookiecutter.onepassword_vault_shortname }}": "${input:opSessionToken}"
+        }
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
+    }
+  ]
+}

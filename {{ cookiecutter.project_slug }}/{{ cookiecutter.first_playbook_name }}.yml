@@ -1,0 +1,7 @@
+---
+- name: {{ cookiecutter.first_play_name }}
+  hosts: {{ cookiecutter.first_host_groupname }}
+  tasks:
+    - name: Print introduction
+      ansible.builtin.debug:
+        msg: "Running {{ cookiecutter.first_playbook_name }} on {% raw %}{{ ansible_host }}{% endraw %}."

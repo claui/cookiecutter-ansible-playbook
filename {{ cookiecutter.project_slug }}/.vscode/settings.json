@@ -1,0 +1,23 @@
+{
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-requirements.json": [
+      "requirements.yml"
+    ],
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-meta.json": [
+      "meta/main.yml"
+    ],
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-vars.json": [
+      "vars/*.yml",
+      "defaults/*.yml",
+      "host_vars/*.yml",
+      "group_vars/*.yml"
+    ],
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-tasks.json": [
+      "tasks/*.yml",
+      "handlers/*.yml"
+    ],
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-playbook.json": [
+      "playbooks/*.yml"
+    ],
+  }
+}
