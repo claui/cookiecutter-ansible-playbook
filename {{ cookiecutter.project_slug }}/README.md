@@ -42,7 +42,7 @@ If you add 1Password integration, you don’t have to enter the Ansible vault pa
 
 One-time steps to configure 1Password CLI:
 
-1. Make sure the 1Password CLI is installed and configured for the `{{ cookiecutter.onepassword_vault_shortname }}` 1Password vault.
+1. Make sure the 1Password CLI is installed and configured for the `{{ cookiecutter.onepassword_account_shortname }}` 1Password account.
 
 2. Make sure you have the `op-vault-client` script installed.
 If you can’t install the package, here’s a copy of the script:
@@ -53,7 +53,8 @@ If you can’t install the package, here’s a copy of the script:
       printf '\0'
       exit 0
     fi
-    op get item {{ cookiecutter.ansible_vault_uuid_in_1password }} --fields password
+    op get item --vault={{ cookiecutter.onepassword_vault_uuid }} \
+      {{ cookiecutter.ansible_vault_uuid_in_1password }} --fields password
     ```
 
 3. Create a file `.ansible.cfg` in your home directory if it’s not already there.
@@ -75,7 +76,7 @@ For maximum convenience, consider setting up a default inventory directory. That
 
 To set up a 1Password CLI session:
 
-1. If you’re not signed in to 1Password CLI, run `eval $(op signin {{ cookiecutter.onepassword_vault_shortname }})` on the command line.
+1. If you’re not signed in to 1Password CLI, run `eval $(op signin {{ cookiecutter.onepassword_account_shortname }})` on the command line.
 
 2. Run one of the command lines in the _Command lines_ section. Make sure to insert the option `-i inventory` after the executable name `ansible` or `ansible-playbook`.
 
@@ -109,7 +110,7 @@ To use the VS Code tasks included in this repository, first configure 1Password
 To set up a 1Password CLI session in Visual Studio Code:
 
 1. Sign in to 1Password CLI using the special command line:
-  `op signin {{ cookiecutter.onepassword_vault_shortname }} --raw`
+  `op signin {{ cookiecutter.onepassword_account_shortname }} --raw`
   This will print a token to your terminal.
 
 2. Copy the token to your clipboard.
@@ -120,7 +121,7 @@ To set up a 1Password CLI session in Visual Studio Code:
 
 5. Select a task to run and press Enter.
 
-6. If VS Code asks you for the `OP_SESSION_{{ cookiecutter.onepassword_vault_shortname }}` token, paste the token from your clipboard.
+6. If VS Code asks you for the `OP_SESSION_{{ cookiecutter.onepassword_account_shortname }}` token, paste the token from your clipboard.
 
 
 ## Command lines

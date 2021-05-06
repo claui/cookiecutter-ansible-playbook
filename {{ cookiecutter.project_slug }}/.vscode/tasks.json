@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "inputs": [
     {
-      "description": "OP_SESSION_{{ cookiecutter.onepassword_vault_shortname }} token",
+      "description": "OP_SESSION_{{ cookiecutter.onepassword_account_shortname }} token",
       "id": "opSessionToken",
       "type": "promptString",
       "password": true
@@ -22,7 +22,7 @@
       ],
       "options": {
         "env": {
-          "OP_SESSION_{{ cookiecutter.onepassword_vault_shortname }}": "${input:opSessionToken}"
+          "OP_SESSION_{{ cookiecutter.onepassword_account_shortname }}": "${input:opSessionToken}"
         }
       },
       "problemMatcher": [],
@@ -46,7 +46,7 @@
       ],
       "options": {
         "env": {
-          "OP_SESSION_{{ cookiecutter.onepassword_vault_shortname }}": "${input:opSessionToken}"
+          "OP_SESSION_{{ cookiecutter.onepassword_account_shortname }}": "${input:opSessionToken}"
         }
       },
       "problemMatcher": [],
