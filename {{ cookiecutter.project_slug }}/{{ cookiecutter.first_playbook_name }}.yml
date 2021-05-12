@@ -3,5 +3,9 @@
   hosts: {{ cookiecutter.first_host_groupname }}
   tasks:
     - name: Print introduction
+      {% if cookiecutter.ansible_version_tuple_min_required >= (2, 10) -%}
       ansible.builtin.debug:
+      {%- else -%}
+      debug:
+      {%- endif %}
         msg: "Running {{ cookiecutter.first_playbook_name }} on {% raw %}{{ ansible_host }}{% endraw %}."

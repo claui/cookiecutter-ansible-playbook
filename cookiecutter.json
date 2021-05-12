@@ -4,8 +4,15 @@
   "first_playbook_name": "{{ cookiecutter.project_slug }}",
   "first_play_name": "main",
   "first_host_groupname": "development",
-  "project_license": ["Apache-2.0", "Proprietary"],
+  "project_license": [
+    "Apache-2.0",
+    "Proprietary"
+  ],
   "author_full_name": "",
+  "ansible_version": [
+    "Ansible 2.5 or higher",
+    "Ansible 2.10 or higher"
+  ],
   "onepassword_account_shortname": "",
   "onepassword_vault_uuid": "",
   "ansible_vault_client_path": "",
