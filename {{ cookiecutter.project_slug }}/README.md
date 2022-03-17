@@ -49,12 +49,21 @@ If you can’t install the package, here’s a copy of the script:
 
     ```bash
     #!/bin/bash
+    set -eu -o pipefail
+
     if [ "${SKIP_VAULT_PASSWORD:-0}" -ne '0' ]; then
       printf '\0'
       exit 0
     fi
-    op get item --vault={{ cookiecutter.onepassword_vault_uuid }} \
-      {{ cookiecutter.ansible_vault_uuid_in_1password }} --fields password
+
+    if [ "$(op --version | cut -d . -f 1)" -le '1' ]; then
+      set -- op get item
+    else
+      set -- op item get
+    fi
+
+    exec "$@" --vault=iic4muvgtwosr67kogwh4q7t2a \
+      owerpe2tcbemjou3wyauz3bd5y --fields password
     ```
 
 3. Create a file `.ansible.cfg` in your home directory if it’s not already there.
@@ -76,7 +85,7 @@ For maximum convenience, consider setting up a default inventory directory. That
 
 To set up a 1Password CLI session:
 
-1. If you’re not signed in to 1Password CLI, run `eval $(op signin {{ cookiecutter.onepassword_account_shortname }})` on the command line.
+1. If you’re not signed in to 1Password CLI, run `eval $(op signin --account {{ cookiecutter.onepassword_account_shortname }})` on the command line.
 
 2. Run one of the command lines in the _Command lines_ section. Make sure to insert the option `-i inventory` after the executable name `ansible` or `ansible-playbook`.
 
@@ -110,7 +119,7 @@ To use the VS Code tasks included in this repository, first configure 1Password
 To set up a 1Password CLI session in Visual Studio Code:
 
 1. Sign in to 1Password CLI using the special command line:
-  `op signin {{ cookiecutter.onepassword_account_shortname }} --raw`
+  `op signin --raw --account {{ cookiecutter.onepassword_account_shortname }}`
   This will print a token to your terminal.
 
 2. Copy the token to your clipboard.
