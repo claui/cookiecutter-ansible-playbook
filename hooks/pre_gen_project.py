@@ -1,3 +1,4 @@
+# pylint: disable=docstring-first-line-empty
 """
 {%
     set version_tuple_dict = {

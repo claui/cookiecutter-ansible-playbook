@@ -2,21 +2,20 @@
 
 This repository contains a `{{ cookiecutter.first_playbook_name }}` playbook.
 
-
 ## Setting up {{ cookiecutter.project_title }}
 
 Clone this repository.
 
 Make sure you have the following packages installed:
 
-- Ansible
+- Ansible (version 7 or newer)
 - sshpass
 - 1Password CLI (optional but recommended)
 - op-vault-client (optional but recommended; not available on Windows)
 
 To install those packages on macOS, run:
 
-```
+```bash
 brew reinstall \
   1password-cli \
   ansible \
@@ -24,15 +23,13 @@ brew reinstall \
   claui/public/op-vault-client
 ```
 
-
 ## Using {{ cookiecutter.project_title }}
 
 1. `cd` to the directory where this README is.
 
 2. In 1Password, look up the password under the item name _{{ cookiecutter.ansible_vault_itemname_in_1password }}_.
 
-3. Run one of the command lines in the _Command lines_ section. For every command line, append the options ` -i inventory --ask-vault-password` directly after the executable name `ansible` or `ansible-playbook`.
-
+3. Run one of the command lines in the _Command lines_ section. For every command line, append the options `-i inventory --ask-vault-password` after the executable name `ansible` or `ansible-playbook`.
 
 ## Advanced: 1Password integration
 
@@ -72,12 +69,12 @@ If you can’t install the package, here’s a copy of the script:
 
 5. Add the following two lines to the `[defaults]` section:
 
-    ```
+    ```ini
     vault_encrypt_identity = {{ cookiecutter.ansible_vault_id }}
     vault_identity_list = {{ cookiecutter.ansible_vault_id }}@/path/to/op-vault-client
     ```
 
-5. Replace the fragment `/path/to/op-vault-client` with the actual path to the `op-vault-client` tool.
+6. Replace the fragment `/path/to/op-vault-client` with the actual path to the `op-vault-client` tool.
 
 For maximum convenience, consider setting up a default inventory directory. That way, you’ll be able to use all the examples in the _Command lines_ section without having to provide any additional options. For more details, see _Configuring a default inventory._
 
@@ -92,7 +89,6 @@ To set up a 1Password CLI session:
 Notes:
 
 - You no longer need to provide `--ask-vault-password` on the command line if you’re using the 1Password integration.
-
 
 ## Advanced: Configuring a default inventory
 
@@ -110,7 +106,6 @@ One-time steps to configure a default inventory:
 4. Replace the fragment `path/to/{{ cookiecutter.project_slug }}` with the actual path to the directory where this README file is. The path can be either absolute or relative to your home directory.
 
 Note: If you set up both the 1Password integration and a default inventory, you’ll be able to run all the examples in the _Command lines_ section as-is.
-
 
 ## Advanced: Visual Studio Code integration
 
@@ -132,7 +127,6 @@ To set up a 1Password CLI session in Visual Studio Code:
 
 6. If VS Code asks you for the `OP_SESSION_{{ cookiecutter.onepassword_account_shortname }}` token, paste the token from your clipboard.
 
-
 ## Command lines
 
 ### Check whether the hosts are online
@@ -146,7 +140,6 @@ ansible {{ cookiecutter.first_host_groupname }} -m ping
 ```bash
 ansible-playbook {{ cookiecutter.first_playbook_name }}.yml
 ```
-
 
 ## License
 
