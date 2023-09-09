@@ -2,6 +2,9 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
   "files.associations": {
     "**/?? cookiecutter.project_slug ??/**/*.json": "jinja-json",
     "**/?? cookiecutter.project_slug ??/**/*.yml": "jinja-yaml",
@@ -10,5 +13,36 @@
   "files.exclude": {
     "**/.git": true
   },
-  "python.linting.pylintEnabled": true
+  "pylint.args": [
+    "--enable-all-extensions"
+  ],
+  "pylint.severity": {
+    "refactor": "Warning"
+  },
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "yaml.customTags": [
+    "!vault"
+  ],
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-requirements.json": [
+      "requirements.yml"
+    ],
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-meta.json": [
+      "meta/main.yml"
+    ],
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-vars.json": [
+      "vars/*.yml",
+      "defaults/*.yml",
+      "host_vars/*.yml",
+      "group_vars/*.yml"
+    ],
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-tasks.json": [
+      "tasks/*.yml",
+      "handlers/*.yml"
+    ],
+    "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-playbook.json": [
+      "playbooks/*.yml"
+    ],
+  }
 }
